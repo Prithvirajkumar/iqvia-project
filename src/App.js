@@ -1,10 +1,10 @@
 import React from "react";
-import { Button } from "@material-ui/core";
+import Dashboard from "./components/Dashboard/Dashboard";
 
 function App() {
   return (
     <div>
-      <h1>Hello there</h1>
+      <Dashboard></Dashboard>
     </div>
   );
 }
