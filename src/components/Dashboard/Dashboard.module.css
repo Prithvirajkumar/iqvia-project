@@ -1,3 +1,15 @@
-.gridDisplay {
-  display: flex;
+.dashboardContainer {
+  margin: 20px;
+}
+
+.searchAndListContainer {
+  padding: 20px;
+}
+
+.searchedCity {
+  padding: 20px;
+}
+
+.title {
+  text-align: center;
 }

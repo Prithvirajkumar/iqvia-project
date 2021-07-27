@@ -1,0 +1,25 @@
+.cityTitleContainer {
+  display: flex;
+  padding-top: 15px;
+}
+
+.cityTitle {
+  width: 90%;
+  padding-top: 2px;
+  margin: 0;
+  font-weight: bold;
+  font-size: 1.17em;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.refreshButton {
+  width: 10%;
+}
+
+.weatherIcon {
+  width: 300px;
+}
+
+.weatherDetailsContainer {
+  padding-top: 28px;
+}

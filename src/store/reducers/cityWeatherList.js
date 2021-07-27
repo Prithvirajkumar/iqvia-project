@@ -2,20 +2,100 @@ import * as actionTypes from "../actions/actionTypes";
 
 const initialState = [];
 
+// const addCityToList = (state, action) => {
+//   if (state.length >= 1 && state.length <= 7) {
+//     const found = state.some((el) => el.cityName === action.cityName);
+//     if (!found) {
+//       return (state = [
+//         {
+//           cityName: action.cityName,
+//           weatherIcon: action.weatherIcon,
+//           temperature: action.temperature,
+//           weatherDescription: action.weatherDescription,
+//           windSpeed: action.windSpeed,
+//           windDeg: action.windDeg,
+//           pressure: action.pressure,
+//           nextFiveDays: action.nextFiveDays,
+//         },
+//         ...state,
+//       ]);
+//     } else {
+//       return state;
+//     }
+//   } else if (state.length === 0) {
+//     return (state = [
+//       {
+//         cityName: action.cityName,
+//         weatherIcon: action.weatherIcon,
+//         temperature: action.temperature,
+//         weatherDescription: action.weatherDescription,
+//         windSpeed: action.windSpeed,
+//         windDeg: action.windDeg,
+//         pressure: action.pressure,
+//         nextFiveDays: action.nextFiveDays,
+//       },
+//       ...state,
+//     ]);
+//   } else if (state.length >= 8) {
+//     return state;
+//   }
+// };
+
 const addCityToList = (state, action) => {
-  return (state = [
-    ...state,
-    {
-      cityName: action.cityName,
-      weatherIcon: action.weatherIcon,
-      temperature: action.temperature,
-      weatherDescription: action.weatherDescription,
-      windSpeed: action.windSpeed,
-      windDeg: action.windDeg,
-      pressure: action.pressure,
-      nextFiveDays: action.nextFiveDays,
-    },
-  ]);
+  if (state.length === 0) {
+    return (state = [
+      {
+        cityName: action.cityName,
+        weatherIcon: action.weatherIcon,
+        temperature: action.temperature,
+        weatherDescription: action.weatherDescription,
+        windSpeed: action.windSpeed,
+        windDeg: action.windDeg,
+        pressure: action.pressure,
+        nextFiveDays: action.nextFiveDays,
+      },
+      ...state,
+    ]);
+  } else if (state.length >= 1 && state.length <= 7) {
+    const found = state.some((el) => el.cityName === action.cityName);
+    if (!found) {
+      return (state = [
+        {
+          cityName: action.cityName,
+          weatherIcon: action.weatherIcon,
+          temperature: action.temperature,
+          weatherDescription: action.weatherDescription,
+          windSpeed: action.windSpeed,
+          windDeg: action.windDeg,
+          pressure: action.pressure,
+          nextFiveDays: action.nextFiveDays,
+        },
+        ...state,
+      ]);
+    } else {
+      return state;
+    }
+  } else if (state.length >= 8) {
+    const found = state.some((el) => el.cityName === action.cityName);
+    if (!found) {
+      state.pop();
+      return (state = [
+        {
+          cityName: action.cityName,
+          weatherIcon: action.weatherIcon,
+          temperature: action.temperature,
+          weatherDescription: action.weatherDescription,
+          windSpeed: action.windSpeed,
+          windDeg: action.windDeg,
+          pressure: action.pressure,
+          nextFiveDays: action.nextFiveDays,
+        },
+        ...state,
+      ]);
+    } else {
+      return state;
+    }
+  }
 };
 
 const removeCityFromList = (state, action) => {

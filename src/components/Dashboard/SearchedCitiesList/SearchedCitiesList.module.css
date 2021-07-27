@@ -1,0 +1,20 @@
+.listItems {
+  display: flex;
+}
+
+.listItemText {
+  width: 89%;
+}
+
+.listButton {
+  height: 56px;
+  width: 10%;
+}
+
+.removeIcon {
+  padding-left: 10px;
+}
+
+.citiesList {
+  margin-top: 20px;
+}

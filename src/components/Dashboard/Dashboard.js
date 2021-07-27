@@ -13,23 +13,30 @@ const Dashboard = () => {
   const cityWeatherList = useSelector((state) => state.cityWeatherList);
   return (
     <React.Fragment>
-      <Grid className={classes.gridDisplay} item xs={12}>
-        <Grid item xs={6}>
-          <Paper>
-            <SearchBar></SearchBar>
-            {cityWeatherList.length >= 1 && (
-              <SeachedCitiesList></SeachedCitiesList>
-            )}
-          </Paper>
-        </Grid>
-        <Grid item xs={6}>
-          {cityWeather.length >= 1 && (
-            <Paper>
-              <SearchedCity></SearchedCity>
-            </Paper>
-          )}
-        </Grid>
-      </Grid>
+      <div>
+        <h1 className={classes.title}>IQVIA Project</h1>
+        <div className={classes.dashboardContainer}>
+          <Grid container spacing={3} item xs={12}>
+            <Grid item xs={6}>
+              <Paper className={classes.searchAndListContainer}>
+                <div>
+                  <SearchBar></SearchBar>
+                  {cityWeatherList.length >= 1 && (
+                    <SeachedCitiesList></SeachedCitiesList>
+                  )}
+                </div>
+              </Paper>
+            </Grid>
+            <Grid item xs={6}>
+              {cityWeather.length >= 1 && (
+                <Paper className={classes.searchedCity}>
+                  <SearchedCity></SearchedCity>
+                </Paper>
+              )}
+            </Grid>
+          </Grid>
+        </div>
+      </div>
     </React.Fragment>
   );
 };
