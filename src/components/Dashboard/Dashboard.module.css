@@ -1,9 +1,13 @@
 .dashboardContainer {
   margin: 20px;
+  display: flex;
+  flex-direction: row;
 }
 
 .searchAndListContainer {
   padding: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
 }
 
 .searchedCity {
@@ -12,4 +16,45 @@
 
 .title {
   text-align: center;
+}
+
+@media (min-width: 1040px) and (max-width: 1200px) {
+  .dashboardContainer {
+    display: flex;
+    flex-direction: column;
+  }
+  .searchAndListContainer {
+    width: 93vw;
+  }
+
+  .searchedCity {
+    width: 93vw;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 1040px) {
+  .dashboardContainer {
+    display: flex;
+    flex-direction: column;
+  }
+  .searchAndListContainer {
+    width: 90vw;
+  }
+
+  .searchedCity {
+    width: 90vw;
+  }
+}
+@media (min-width: 320px) and (max-width: 600px) {
+  .dashboardContainer {
+    display: flex;
+    flex-direction: column;
+  }
+  .searchAndListContainer {
+    width: 75vw;
+  }
+
+  .searchedCity {
+    width: 75vw;
+  }
 }

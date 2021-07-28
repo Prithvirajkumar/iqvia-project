@@ -34,7 +34,7 @@ const SearchedCity = () => {
 
   return (
     <React.Fragment>
-      <div>
+      <div className={classes.searchedCityContainer}>
         <div className={classes.cityTitleContainer}>
           <h3 className={classes.cityTitle}>{cityWeather[0].cityName}</h3>
           <Button
@@ -74,81 +74,72 @@ const SearchedCity = () => {
           ></Button>
         </div>
         <Grid container item xs={12}>
-          <Grid item xs={4}>
-            <img
-              className={classes.weatherIcon}
-              src={iconUrlGenerator(cityWeather[0].weatherIcon)}
-              alt="cityImage"
-            ></img>
-          </Grid>
-          <Grid item xs={8}>
-            <div className={classes.weatherDetailsContainer}>
-              <List>
-                <ListItem>
-                  <ListItemText>
-                    Temperature: {Math.trunc(cityWeather[0].temperature)}°C
-                  </ListItemText>
-                </ListItem>
-                <ListItem>
-                  <ListItemText>
-                    Description: {upperCasedweatherDesc}
-                  </ListItemText>
-                </ListItem>
-                <ListItem>
-                  <ListItemText>
-                    Wind: {cityWeather[0].windSpeed}ms {cityWeather[0].windDeg}
-                    deg
-                  </ListItemText>
-                </ListItem>
-                <ListItem>
-                  <ListItemText>
-                    Pressure: {cityWeather[0].pressure}
-                  </ListItemText>
-                </ListItem>
-              </List>
-            </div>
-          </Grid>
+          <div className={classes.weatherIconAndDetailsContainer}>
+            <Grid item xs={4}>
+              <img
+                className={classes.weatherIcon}
+                src={iconUrlGenerator(cityWeather[0].weatherIcon)}
+                alt="cityImage"
+              ></img>
+            </Grid>
+            <Grid item xs={8}>
+              <div className={classes.weatherDetailsContainer}>
+                <List>
+                  <ListItem>
+                    <ListItemText>
+                      Temperature: {Math.trunc(cityWeather[0].temperature)}°C
+                    </ListItemText>
+                  </ListItem>
+                  <ListItem>
+                    <ListItemText>
+                      Description: {upperCasedweatherDesc}
+                    </ListItemText>
+                  </ListItem>
+                  <ListItem>
+                    <ListItemText>
+                      Wind: {cityWeather[0].windSpeed}ms{" "}
+                      {cityWeather[0].windDeg}
+                      deg
+                    </ListItemText>
+                  </ListItem>
+                  <ListItem>
+                    <ListItemText>
+                      Pressure: {cityWeather[0].pressure}
+                    </ListItemText>
+                  </ListItem>
+                </List>
+              </div>
+            </Grid>
+          </div>
         </Grid>
-        <Grid container item xs={12}>
+        <Grid container item xs={12} className={classes.forecastContainer}>
           {cityWeatherForecast.cityName &&
             cityWeatherForecast.cityName.map((eachForecast) => {
               return (
-                <Grid
-                  item
-                  xs={2}
+                <div
                   key={eachForecast.cityName + Math.random()}
-                  className={classes.forecastContainer}
+                  className={classes.forecastItem}
                 >
-                  <div>
-                    <List>
-                      <ListItem>
-                        <ListItemText>
-                          {eachForecast.time.getDate()}{" "}
-                          {monthGenerator(eachForecast.time)}
-                        </ListItemText>
-                      </ListItem>
-                    </List>
-                    <List>
-                      <ListItem>
-                        <ListItemText>
-                          {dayGenerator(eachForecast.time)}
-                        </ListItemText>
-                      </ListItem>
-                    </List>
-                    <img
-                      className={classes.weatherForeCastIcon}
-                      src={iconUrlGenerator(eachForecast.weatherIcon)}
-                      alt="cityForecastImage"
-                    ></img>
-                    <List>
-                      <ListItem>
-                        <ListItemText>
-                          {Math.trunc(eachForecast.averageTemp)}°C
-                        </ListItemText>
-                      </ListItem>
-                    </List>
-                  </div>
-                </Grid>
+                  <List>
+                    <ListItemText className={classes.forecastText}>
+                      {eachForecast.time.getDate()}{" "}
+                      {monthGenerator(eachForecast.time)}
+                    </ListItemText>
+                  </List>
+                  <List>
+                    <ListItemText className={classes.forecastText}>
+                      {dayGenerator(eachForecast.time)}
+                    </ListItemText>
+                  </List>
+                  <img
+                    className={classes.weatherForeCastIcon}
+                    src={iconUrlGenerator(eachForecast.weatherIcon)}
+                    alt="cityForecastImage"
+                  ></img>
+                  <ListItemText className={classes.forecastText}>
+                    {Math.trunc(eachForecast.averageTemp)}°C
+                  </ListItemText>
+                </div>
               );
             })}
         </Grid>

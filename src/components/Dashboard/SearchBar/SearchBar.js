@@ -33,7 +33,7 @@ const SearchBar = () => {
 
   return (
     <React.Fragment>
-      <div className={classes.searchbarMargin}>
+      <div className={classes.searchbarContainer}>
         <TextField
           className={classes.searchbar}
           error={errorState}
