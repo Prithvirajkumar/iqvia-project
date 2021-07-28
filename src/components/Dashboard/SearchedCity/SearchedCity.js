@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import RefreshIcon from "@material-ui/icons/Refresh";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
@@ -8,6 +9,8 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 
 import classes from "./SearchedCity.module.css";
+import { getCityWeatherHandler } from "../../../utils/getCityWeatherHandler";
+import { fetchSelectedCity } from "../../../store/actions/cityWeather";
 import cloudy from "../../../images/cloudy.svg";
 import rainy from "../../../images/rainy.svg";
 import snowy from "../../../images/snowy.svg";
@@ -15,7 +18,12 @@ import sunny from "../../../images/sunny.svg";
 import thunder from "../../../images/thunder.svg";
 
 const SearchedCity = () => {
+  const dispatch = useDispatch();
   const cityWeather = useSelector((state) => state.cityWeather);
+
+  let weatherDesc = cityWeather[0].weatherDescription;
+  let upperCasedweatherDesc =
+    weatherDesc.charAt(0).toUpperCase() + weatherDesc.slice(1);
 
   console.log(cityWeather[0].weatherIcon);
 
@@ -199,7 +207,30 @@ const SearchedCity = () => {
           <Button
             className={classes.refreshButton}
             color="primary"
-            startIcon={<RefreshIcon className={classes.removeIcon} />}
+            startIcon={
+              <RefreshIcon
+                className={classes.removeIcon}
+                onClick={() => {
+                  getCityWeatherHandler(cityWeather[0].cityName).then(
+                    (response) => {
+                      if (response) {
+                        dispatch(
+                          fetchSelectedCity(
+                            response.data.name,
+                            response.data.weather[0].id,
+                            response.data.main.temp,
+                            response.data.weather[0].description,
+                            response.data.wind.speed,
+                            response.data.wind.deg,
+                            response.data.main.pressure
+                          )
+                        );
+                      }
+                    }
+                  );
+                }}
+              />
+            }
           ></Button>
         </div>
         <Grid container item xs={12}>
@@ -215,12 +246,12 @@ const SearchedCity = () => {
               <List>
                 <ListItem>
                   <ListItemText>
-                    Temperature: {cityWeather[0].temperature}°C
+                    Temperature: {Math.trunc(cityWeather[0].temperature)}°C
                   </ListItemText>
                 </ListItem>
                 <ListItem>
                   <ListItemText>
-                    Description: {cityWeather[0].weatherDescription}
+                    Description: {upperCasedweatherDesc}
                   </ListItemText>
                 </ListItem>
                 <ListItem>

@@ -18,3 +18,9 @@
 .citiesList {
   margin-top: 20px;
 }
+
+.clearButtonDiv {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-self: flex-end;
+}

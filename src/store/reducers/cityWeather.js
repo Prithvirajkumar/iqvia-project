@@ -17,10 +17,16 @@ const fetchSelectedCity = (state, action) => {
   ]);
 };
 
+const clearCity = (state) => {
+  return (state = initialState);
+};
+
 const cityWeatherList = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.FETCH_SELECTED_CITY:
       return fetchSelectedCity(state, action);
+    case actionTypes.CLEAR_CITY_LIST:
+      return clearCity(state);
     default:
       return state;
   }

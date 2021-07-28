@@ -52,3 +52,15 @@ export const removeCityFromList = (cityName) => {
     cityName: cityName,
   };
 };
+
+export const clearCityList = () => {
+  return {
+    type: actionTypes.CLEAR_CITY_LIST,
+  };
+};
+
+export const clearCity = () => {
+  return {
+    type: actionTypes.CLEAR_CITY_LIST,
+  };
+};
