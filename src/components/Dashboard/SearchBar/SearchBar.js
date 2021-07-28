@@ -47,14 +47,12 @@ const SearchBar = () => {
             setSearchStateforButton(event.target.value);
             if (event.keyCode === 13) {
               getCityForcastHandler(event.target.value).then((response) => {
-                console.log("RESPONSE", response);
                 if (response) {
                   dispatch(fetchSelectedCityForecast(response));
                 }
               });
               getCityWeatherHandler(event.target.value).then((response) => {
                 if (response) {
-                  console.log(response);
                   dispatch(
                     addCityToList(
                       response.data.name,
@@ -97,7 +95,6 @@ const SearchBar = () => {
             if (searchStateforButton) {
               getCityWeatherHandler(searchStateforButton).then((response) => {
                 if (response) {
-                  console.log(response);
                   dispatch(
                     addCityToList(
                       response.data.name,

@@ -16,7 +16,6 @@ export const getCityForcastHandler = async (searchValue) => {
     const response = await axios.get(
       `http://api.openweathermap.org/data/2.5/forecast?q=${searchValue}&appid=c51223c219d6aec8cb8c5210449bd859&units=metric`
     );
-    console.log(response);
     const newResponse = [];
     for (let i = 7; i < response.data.list.length; i += 8) {
       let utcSeconds = response.data.list[i].dt;
@@ -32,7 +31,6 @@ export const getCityForcastHandler = async (searchValue) => {
           2,
       });
     }
-    console.log(newResponse);
     return newResponse;
   } catch (error) {
     console.error("Data from getCityForcastHandler API:", error);

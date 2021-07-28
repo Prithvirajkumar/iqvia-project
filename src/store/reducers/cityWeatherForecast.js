@@ -3,7 +3,6 @@ import * as actionTypes from "../actions/actionTypes";
 const initialState = [];
 
 const fetchSelectedCityForecast = (state, action) => {
-  console.log("REDUCER", action);
   return (state = action);
 };
 
