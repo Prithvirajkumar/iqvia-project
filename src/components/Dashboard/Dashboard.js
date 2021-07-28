@@ -14,7 +14,7 @@ const Dashboard = () => {
   return (
     <React.Fragment>
       <div>
-        <h1 className={classes.title}>IQVIA Project</h1>
+        <h1 className={classes.title}>IQVIA Challenge Project</h1>
         <div className={classes.dashboardContainer}>
           <Grid item xs={6}>
             <Paper className={classes.searchAndListContainer}>
