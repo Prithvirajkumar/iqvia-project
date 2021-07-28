@@ -23,3 +23,12 @@
 .weatherDetailsContainer {
   padding-top: 28px;
 }
+
+.weatherForeCastIcon {
+  width: 100px;
+}
+
+.forecastContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}

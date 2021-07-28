@@ -5,10 +5,14 @@ import SearchIcon from "@material-ui/icons/Search";
 import Button from "@material-ui/core/Button";
 
 import classes from "./SearchBar.module.css";
-import { getCityWeatherHandler } from "../../../utils/getCityWeatherHandler";
+import {
+  getCityWeatherHandler,
+  getCityForcastHandler,
+} from "../../../utils/getCityWeatherHandler";
 import {
   addCityToList,
   fetchSelectedCity,
+  fetchSelectedCityForecast,
 } from "../../../store/actions/cityWeather";
 
 const SearchBar = () => {
@@ -42,6 +46,12 @@ const SearchBar = () => {
           onKeyUp={(event) => {
             setSearchStateforButton(event.target.value);
             if (event.keyCode === 13) {
+              getCityForcastHandler(event.target.value).then((response) => {
+                console.log("RESPONSE", response);
+                if (response) {
+                  dispatch(fetchSelectedCityForecast(response));
+                }
+              });
               getCityWeatherHandler(event.target.value).then((response) => {
                 if (response) {
                   console.log(response);

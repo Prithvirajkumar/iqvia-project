@@ -8,12 +8,17 @@ import Button from "@material-ui/core/Button";
 import ClearIcon from "@material-ui/icons/Clear";
 
 import classes from "./SearchedCitiesList.module.css";
-import { getCityWeatherHandler } from "../../../utils/getCityWeatherHandler";
+import {
+  getCityWeatherHandler,
+  getCityForcastHandler,
+} from "../../../utils/getCityWeatherHandler";
 import {
   fetchSelectedCity,
+  fetchSelectedCityForecast,
   clearCityList,
   clearCity,
   removeCityFromList,
+  clearCityForecast,
 } from "../../../store/actions/cityWeather";
 
 const SearchedCitiesList = () => {
@@ -40,6 +45,13 @@ const SearchedCitiesList = () => {
                   className={classes.listItemText}
                   button
                   onClick={() => {
+                    getCityForcastHandler(cityWeather.cityName).then(
+                      (response) => {
+                        if (response) {
+                          dispatch(fetchSelectedCityForecast(response));
+                        }
+                      }
+                    );
                     getCityWeatherHandler(cityWeather.cityName).then(
                       (response) => {
                         if (response) {
@@ -91,6 +103,7 @@ const SearchedCitiesList = () => {
             onClick={() => {
               dispatch(clearCityList());
               dispatch(clearCity());
+              dispatch(clearCityForecast());
             }}
           >
             Clear

@@ -23,6 +23,21 @@ export const fetchSelectedCity = (
   };
 };
 
+export const fetchSelectedCityForecast = (
+  cityName,
+  time,
+  weatherIcon,
+  averageTemp
+) => {
+  return {
+    type: actionTypes.FETCH_SELECTED_CITY_FORECAST,
+    cityName: cityName,
+    time: time,
+    weatherIcon: weatherIcon,
+    averageTemp: averageTemp,
+  };
+};
+
 export const addCityToList = (
   cityName,
   weatherIcon,
@@ -62,5 +77,11 @@ export const clearCityList = () => {
 export const clearCity = () => {
   return {
     type: actionTypes.CLEAR_CITY_LIST,
+  };
+};
+
+export const clearCityForecast = () => {
+  return {
+    type: actionTypes.CLEAR_SELECTED_CITY_FORECAST,
   };
 };
