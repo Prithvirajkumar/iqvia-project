@@ -80,14 +80,10 @@ const SearchedCitiesList = () => {
                 <Button
                   className={classes.listButton}
                   color="secondary"
-                  startIcon={
-                    <ClearIcon
-                      className={classes.removeIcon}
-                      onClick={() => {
-                        dispatch(removeCityFromList(cityName));
-                      }}
-                    />
-                  }
+                  onClick={() => {
+                    dispatch(removeCityFromList(cityName));
+                  }}
+                  startIcon={<ClearIcon className={classes.removeIcon} />}
                 ></Button>
               </div>
             );
